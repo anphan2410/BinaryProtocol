@@ -1,39 +1,10 @@
 #include"binaryprotocol.h"
 
-//Miscellany: Support Codes*********************************************/
 
-quint8 XORofAllBytesInQByteArr(const QByteArray &QBArr)
+BinaryProtocol::BinaryProtocol()
 {
-    if (~QBArr.isNull() && ~QBArr.isEmpty())
-    {        
-        QByteArray::const_iterator ConstItr = QBArr.constBegin();
-        quint8 IntTmp = *(ConstItr++);
-        for (;ConstItr!=QBArr.cend(); ConstItr++)
-        {
-            IntTmp ^=*ConstItr;
-        }
-        return IntTmp;
-    }
-    else
-        return 0;
+    anIf(BinaryProtocolDbgEn, anTrk("Object Constructed"));
 }
-
-///
-/// \brief IntStr2QBArr0Pad
-/// \param Num
-/// \param SizeInByte
-/// \return QByteArray contains a hex number
-///         representing an integer number encoded by Ascii code
-///
-const QByteArray IntStr2QBArr0Pad(const quint8 Num, const quint8 SizeInByte)
-{
-    QString QStrTmp = QString::number(Num);
-    return QStrTmp.prepend(QString("").fill('0',SizeInByte-QStrTmp.size())).toLocal8Bit();
-}
-
-
-
-//___________________________________________________________________________________________
 
 ///
 /// \brief BinaryProtocol::BinaryProtocol
@@ -47,14 +18,14 @@ BinaryProtocol::BinaryProtocol(const quint8 BPNum)
     ,mDataLen(_StdDatLen)
     ,mCmd(0)
     ,mCh(0)
-    ,mData(* new TypDat())
+    ,mData()
     ,mChkSum(0)
-    ,mMsg(*(new QByteArray()))
+    ,mMsg()
 {
-
+    anIf(BinaryProtocolDbgEn, anTrk("Object Constructed With BPNo="<<BPNum));
 }
 
-BinaryProtocol &BinaryProtocol::FromQByteArray(const QByteArray &QBArr)
+BinaryProtocol &BinaryProtocol::fromQByteArray(const QByteArray &QBArr)
 {
     TypHdr IntTmp1 = 0;
     TypHdr IntTmp2 = QBArr.left(_SzHdr).toHex().toInt(NULL,16);

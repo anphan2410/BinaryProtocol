@@ -61,17 +61,18 @@ class BinaryProtocol
     TypDatLen mDataLen;
     TypCmd mCmd;
     TypCh  mCh;
-    TypDat &mData;
+    TypDat mData;
     TypChkSum mChkSum;
     //Protocol
-    QByteArray &mMsg;
+    QByteArray mMsg;
     //______________________________________________________________________________________________________
 
 public:
 
+    explicit BinaryProtocol();
     explicit BinaryProtocol(const quint8 BPNum);
 
-    static BinaryProtocol &FromQByteArray(const QByteArray &QBArr);
+    static BinaryProtocol &fromQByteArray(const QByteArray &QBArr);
 
     quint8 GetBPNo() const;
     BinaryProtocol &SetBPNo(const quint8 BPNum);
