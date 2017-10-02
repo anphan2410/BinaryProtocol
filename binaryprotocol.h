@@ -5,7 +5,7 @@
 
 #include <QDebug>
 #include <QtMath>
-#include "anlogger.h"
+#include "anlogger.h/anlogger.h"
 #include "commonthings.h"
 
 ///
