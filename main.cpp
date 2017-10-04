@@ -1,5 +1,5 @@
 #include <QCoreApplication>
-#include "binaryprotocol.h"
+#include "src/binaryprotocol.h"
 
 int main(int argc, char *argv[])
 {
