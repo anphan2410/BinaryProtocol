@@ -4,7 +4,7 @@
 #include <QHash>
 #include <QByteArray>
 #include <QVariant>
-#include "anLogger/anlogger.h"
+#include "anLogger/src/anlogger.h"
 
 inline QByteArray &operator <<(QByteArray &QBArr, const quint8 Data)
 {

@@ -5,8 +5,8 @@
 
 #include <QDebug>
 #include <QtMath>
-#include "anLogger/anlogger.h"
-#include "edctuCommons/commonthings.h"
+#include "anLogger/src/anlogger.h"
+#include "shared/commonthings.h"
 
 ///
 /// \brief The BinaryProtocol class
